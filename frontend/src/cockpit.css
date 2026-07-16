@@ -1,0 +1,51 @@
+/* 手机AI爬虫工具 · 暗色数据作战舱主题
+   覆盖 Element Plus 暗色变量 + 全局底色/字体 */
+:root {
+  --sig: #FF5A1F;
+  --sig-soft: rgba(255, 90, 31, .15);
+  --live: #24E39B;
+  --amber: #F5B93B;
+  --ink: #E8ECF3;
+  --ink-2: #AEB8C7;
+  --muted: #6B7688;
+  --bg: #0B0E13;
+  --panel: #141922;
+  --panel-2: #1A212C;
+  --line: #232C39;
+  --line-soft: #1B2330;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+}
+
+/* Element Plus 暗色主色改为 Signal Orange */
+html.dark {
+  --el-color-primary: #FF5A1F;
+  --el-color-primary-light-3: #ff7a48;
+  --el-color-primary-light-5: #ff9366;
+  --el-color-primary-light-7: #ffb392;
+  --el-color-primary-light-8: #5a2f22;
+  --el-color-primary-light-9: #33201a;
+  --el-color-primary-dark-2: #e04a12;
+  --el-color-success: #24E39B;
+  --el-bg-color: #0B0E13;
+  --el-bg-color-page: #0B0E13;
+  --el-bg-color-overlay: #141922;
+  --el-fill-color-blank: #141922;
+  --el-border-color: #232C39;
+  --el-border-color-light: #232C39;
+  --el-text-color-primary: #E8ECF3;
+  --el-text-color-regular: #AEB8C7;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "PingFang SC", "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px),
+    radial-gradient(120% 80% at 88% -8%, var(--sig-soft), transparent 60%);
+  background-size: 44px 44px, 44px 44px, 100% 100%;
+  background-attachment: fixed;
+}

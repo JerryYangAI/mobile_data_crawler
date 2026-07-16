@@ -1,64 +1,52 @@
 <template>
-  <div class="splash-screen" v-if="isLoading">
-    <div class="splash-content">
-      <div class="splash-logo">🤖</div>
-      <h1 class="splash-title">豆汁手机</h1>
-      <div class="splash-slogan">
-        <div class="slogan-line">字节有豆包</div>
-        <div class="slogan-line">我们有豆汁</div>
-        <div class="slogan-line highlight">豆汁助手你值得拥有</div>
+  <!-- 开屏 -->
+  <div class="splash" v-if="isLoading">
+    <div class="splash-in">
+      <div class="splash-mark">
+        <span class="sm-glyph">🕷</span>
+        <span class="sm-ring"></span>
       </div>
-      <div class="loading-dots">
-        <span></span><span></span><span></span>
-      </div>
+      <h1 class="splash-title">手机<span class="hl">AI爬虫</span>工具</h1>
+      <div class="splash-sub">PHONE-AI-CRAWLER · 任意 App · 任意品类 · 任意商品</div>
+      <div class="splash-bar"><span></span></div>
     </div>
   </div>
 
-  <div class="app-container" v-else>
-    <el-container class="main-layout">
-      <el-header class="app-header">
-        <div class="header-content">
-          <div class="logo">
-            <span class="logo-icon">🤖</span>
-            <h1>豆汁手机</h1>
-          </div>
-          <div class="header-actions">
-            <a href="https://www.tongzhilian.cn" target="_blank" class="nav-link team-link">
-              <el-icon><UserFilled /></el-icon> 欢迎更多小伙伴加入
-            </a>
-            <div class="repo-links">
-              <a href="https://gitee.com/Lapper/douzhi-phone" target="_blank" class="repo-btn gitee">
-                <img src="https://gitee.com/static/images/logo-black.svg" alt="Gitee" />
-                <span>国内仓库</span>
-              </a>
-              <a href="https://github.com/Lappercn/DouZhiPhone" target="_blank" class="repo-btn github">
-                <svg height="20" viewBox="0 0 16 16" version="1.1" width="20" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-                <span>国外仓库</span>
-              </a>
-            </div>
-            <el-tag type="success" effect="dark" round class="status-tag">Online</el-tag>
+  <div class="app" v-else>
+    <!-- 顶栏 -->
+    <header class="cmd">
+      <div class="cmd-in">
+        <div class="brand">
+          <span class="mark">🕷</span>
+          <div>
+            <h1>手机AI爬虫工具</h1>
+            <div class="tag">PHONE-AI-CRAWLER · v2.0</div>
           </div>
         </div>
-      </el-header>
-      
-      <el-main class="app-main">
-        <el-tabs v-model="activeTab" class="mode-tabs">
-          <el-tab-pane label="🤖 Agent 模式" name="agent">
-            <ControlPanel />
-          </el-tab-pane>
-          <el-tab-pane label="📊 FSTea 数据采集" name="collector" lazy>
-            <CollectorPanel />
-          </el-tab-pane>
-        </el-tabs>
-      </el-main>
+        <div class="cmd-right">
+          <a class="ghost" :href="GITHUB_URL" target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.8 9.6.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10.2 10.2 0 0 0 22 12.2C22 6.6 17.5 2 12 2z"/></svg>
+            GitHub
+          </a>
+          <button class="ghost sponsor" @click="activeTab = 'sponsor'">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-9C.7 8.5 2.2 5 5.5 5 7.5 5 9 6.2 12 9c3-2.8 4.5-4 6.5-4 3.3 0 4.8 3.5 3 7-2.5 4.5-9.5 9-9.5 9z"/></svg>
+            赞助支持
+          </button>
+          <span class="status"><span class="dot"></span>ONLINE</span>
+        </div>
+      </div>
+    </header>
 
-      <el-footer class="app-footer">
-        <p>
-          © 2025 AI Phone Automation | Powered by 
-          <a href="https://www.tongzhilian.cn" target="_blank" class="footer-link">同智联</a>
-        </p>
-      </el-footer>
-    </el-container>
+    <main class="app-main">
+      <el-tabs v-model="activeTab" class="mode-tabs">
+        <el-tab-pane label="🤖 Agent 模式" name="agent"><ControlPanel /></el-tab-pane>
+        <el-tab-pane label="📊 数据采集" name="collector" lazy><CollectorPanel /></el-tab-pane>
+        <el-tab-pane label="❤ 赞助支持" name="sponsor" lazy><SponsorPanel :github-url="GITHUB_URL" /></el-tab-pane>
+        <el-tab-pane label="📖 小白用户指南" name="guide" lazy><GuidePanel /></el-tab-pane>
+      </el-tabs>
+    </main>
+
+    <footer class="app-foot">手机AI爬虫工具 · 由 JY(广哥) 独立开发与维护 · <a :href="GITHUB_URL" target="_blank" rel="noreferrer">{{ GITHUB_URL.replace('https://', '') }}</a></footer>
   </div>
 </template>
 
@@ -66,307 +54,68 @@
 import { ref, onMounted } from 'vue'
 import ControlPanel from './components/ControlPanel.vue'
 import CollectorPanel from './components/CollectorPanel.vue'
-import { UserFilled } from '@element-plus/icons-vue'
+import SponsorPanel from './components/SponsorPanel.vue'
+import GuidePanel from './components/GuidePanel.vue'
 
+const GITHUB_URL = 'https://github.com/JerryYangAI/mobile_data_crawler'
 const isLoading = ref(true)
-const activeTab = ref('agent')
+const activeTab = ref('collector')
 
 onMounted(() => {
-  // Show splash screen for 5 seconds to allow reading the slogan
-  setTimeout(() => {
-    isLoading.value = false
-  }, 5000)
+  setTimeout(() => { isLoading.value = false }, 2600)
 })
 </script>
 
 <style>
-/* Splash Screen Styles - Professional & Atmospheric */
-.splash-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: radial-gradient(circle at 50% 50%, #1a2a40 0%, #0f172a 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  overflow: hidden;
-}
+/* ── 开屏 ── */
+.splash { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center;
+  background: radial-gradient(circle at 50% 40%, #12161d 0%, #05070b 100%); }
+.splash-in { text-align: center; }
+.splash-mark { position: relative; width: 88px; height: 88px; margin: 0 auto 26px; display: grid; place-items: center; }
+.sm-glyph { font-size: 46px; filter: drop-shadow(0 0 18px rgba(255,90,31,.5)); animation: float 3s ease-in-out infinite; }
+.sm-ring { position: absolute; inset: 0; border: 2px solid transparent; border-top-color: #FF5A1F; border-right-color: #FF5A1F;
+  border-radius: 50%; animation: spin 2.4s linear infinite; }
+.splash-title { color: #fff; font-size: 34px; font-weight: 800; letter-spacing: 2px; margin: 0;
+  opacity: 0; animation: fadeUp .8s .3s forwards; }
+.splash-title .hl { color: #FF5A1F; }
+.splash-sub { font-family: ui-monospace, Menlo, monospace; color: #6B7688; font-size: 12px; letter-spacing: .12em; margin-top: 12px;
+  opacity: 0; animation: fadeUp .8s .6s forwards; }
+.splash-bar { width: 180px; height: 3px; background: rgba(255,255,255,.08); border-radius: 2px; margin: 30px auto 0; overflow: hidden;
+  opacity: 0; animation: fadeUp .8s .9s forwards; }
+.splash-bar span { display: block; height: 100%; width: 40%; background: linear-gradient(90deg,#FF5A1F,#24E39B); border-radius: 2px; animation: load 1.6s ease-in-out infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes float { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-8px); } }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } from { opacity: 0; transform: translateY(12px); } }
+@keyframes load { 0%{ transform: translateX(-100%); } 100%{ transform: translateX(350%); } }
 
-/* Subtle background pattern */
-.splash-screen::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-}
+/* ── 顶栏 ── */
+.app { min-height: 100vh; display: flex; flex-direction: column; }
+.cmd { position: sticky; top: 0; z-index: 40; background: rgba(11,14,19,.82); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line); }
+.cmd-in { max-width: 1440px; margin: 0 auto; height: 60px; padding: 0 26px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand .mark { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; font-size: 19px;
+  background: linear-gradient(150deg, #FF5A1F, #C8340A); box-shadow: 0 0 0 1px rgba(255,90,31,.4), 0 6px 20px rgba(255,90,31,.28); }
+.brand h1 { font-size: 16px; margin: 0; font-weight: 700; color: var(--ink); letter-spacing: -.01em; }
+.brand .tag { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: .08em; }
+.cmd-right { display: flex; align-items: center; gap: 8px; }
+.ghost { display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 13px; border: 1px solid var(--line);
+  border-radius: 9px; background: var(--panel); color: var(--ink-2); font-size: 13px; font-weight: 500; text-decoration: none; cursor: pointer;
+  transition: border-color .18s, color .18s, transform .18s; }
+.ghost:hover { border-color: color-mix(in srgb, var(--sig) 55%, var(--line)); color: var(--ink); transform: translateY(-1px); }
+.ghost.sponsor { border-color: color-mix(in srgb, var(--sig) 50%, var(--line)); color: var(--sig); }
+.ghost.sponsor:hover { background: var(--sig-soft); }
+.status { display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 12px; border-radius: 9px;
+  background: color-mix(in srgb, var(--live) 12%, transparent); color: var(--live); font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .06em; }
+.status .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); animation: pulse 2.2s infinite; }
+@keyframes pulse { 0%{ box-shadow: 0 0 0 0 color-mix(in srgb,var(--live) 60%,transparent); } 70%{ box-shadow: 0 0 0 7px transparent; } }
 
-.splash-content {
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
+.app-main { flex: 1; max-width: 1440px; width: 100%; margin: 0 auto; padding: 18px 26px 40px; box-sizing: border-box; }
+.app-foot { text-align: center; color: var(--muted); font-size: 12px; font-family: var(--mono); padding: 22px 0 34px; letter-spacing: .03em; }
+.app-foot a { color: var(--sig); text-decoration: none; }
 
-.splash-logo {
-  font-size: 72px;
-  margin-bottom: 24px;
-  filter: drop-shadow(0 0 30px rgba(64, 158, 255, 0.4));
-  animation: logoFloat 3s ease-in-out infinite;
-}
-
-.splash-title {
-  font-size: 42px;
-  color: #ffffff;
-  margin: 0 0 48px 0;
-  font-weight: 700;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  opacity: 0;
-  animation: titleReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.splash-slogan {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 60px;
-}
-
-.slogan-line {
-  font-size: 18px;
-  color: #94a3b8;
-  font-weight: 300;
-  letter-spacing: 1px;
-  opacity: 0;
-  transform: translateY(15px);
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-.slogan-line:nth-child(1) { animation-delay: 1.2s; }
-.slogan-line:nth-child(2) { animation-delay: 2.0s; }
-.slogan-line:nth-child(3) { 
-  animation-delay: 3.0s;
-  font-size: 28px;
-  font-weight: 600;
-  margin-top: 16px;
-  background: linear-gradient(120deg, #60a5fa, #c084fc);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  letter-spacing: 2px;
-  filter: drop-shadow(0 2px 10px rgba(96, 165, 250, 0.3));
-}
-
-.loading-dots {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  opacity: 0;
-  animation: fadeIn 0.8s ease-out 4.0s forwards;
-}
-
-.loading-dots span {
-  width: 8px;
-  height: 8px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  animation: dotPulse 1.4s infinite ease-in-out both;
-}
-
-.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
-.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
-
-@keyframes logoFloat {
-  0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 30px rgba(64, 158, 255, 0.4)); }
-  50% { transform: translateY(-10px) scale(1.02); filter: drop-shadow(0 0 40px rgba(64, 158, 255, 0.6)); }
-}
-
-@keyframes titleReveal {
-  from { opacity: 0; transform: translateY(20px) scale(0.95); filter: blur(10px); }
-  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes dotPulse {
-  0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
-  40% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-}
-
-:root {
-  --primary-color: #409EFF;
-  --bg-color: #f0f2f5;
-  --header-height: 64px;
-}
-
-body {
-  margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: var(--bg-color);
-  color: #303133;
-  /* Add subtle background pattern */
-  background-image: 
-    radial-gradient(circle at 15% 50%, rgba(64, 158, 255, 0.08), transparent 25%),
-    radial-gradient(circle at 85% 30%, rgba(54, 209, 220, 0.08), transparent 25%);
-  background-attachment: fixed;
-}
-
-.app-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.main-layout {
-  min-height: 100vh;
-}
-
-.app-header {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-  height: var(--header-height) !important;
-  display: flex;
-  align-items: center;
-  padding: 0 40px;
-  z-index: 100;
-  position: sticky;
-  top: 0;
-  transition: all 0.3s ease;
-}
-
-.app-header:hover {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-}
-
-.header-content {
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: #606266;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: color 0.2s;
-  font-weight: 500;
-}
-
-.nav-link:hover {
-  color: var(--primary-color);
-}
-
-.repo-links {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-right: 12px;
-  padding-right: 12px;
-  border-right: 1px solid #e4e7ed;
-}
-
-.repo-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 32px;
-  padding: 0 12px;
-  border-radius: 16px;
-  background: #f5f7fa;
-  transition: all 0.2s;
-  color: #606266;
-  text-decoration: none;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.repo-btn:hover {
-  background: #e6e8eb;
-  transform: translateY(-1px);
-  color: #303133;
-}
-
-.repo-btn img {
-  width: 20px;
-  height: 20px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo-icon {
-  font-size: 32px;
-}
-
-.logo h1 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 600;
-  color: #1a1a1a;
-  letter-spacing: -0.5px;
-}
-
-.app-main {
-  padding: 24px 40px;
-  max-width: 1440px;
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.app-footer {
-  text-align: center;
-  color: #909399;
-  font-size: 12px;
-  padding: 20px 0;
-}
-
-.footer-link {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 600;
-  transition: opacity 0.2s;
-}
-
-.footer-link:hover {
-  opacity: 0.8;
-}
+/* Element Plus tabs 暗色微调 */
+.mode-tabs .el-tabs__item { font-weight: 600; }
+.mode-tabs .el-tabs__item.is-active { color: var(--sig); }
+.mode-tabs .el-tabs__active-bar { background: var(--sig); }
 </style>
