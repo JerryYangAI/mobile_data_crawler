@@ -1,0 +1,18 @@
+node_modules/
+logs/
+*.log
+.DS_Store
+.env
+config/local.json
+*.png
+*.jpg
+screenshots/
+test_output/
+data/
+frontend/node_modules/
+frontend/dist/
+external_repos/
+# 任务/开发笔记(不进公开仓库)
+prompt*.md
+.DS_Store
+*.DS_Store
