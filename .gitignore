@@ -16,3 +16,6 @@ external_repos/
 prompt*.md
 .DS_Store
 *.DS_Store
+
+# 例外: 微信赞助收款码需随仓库分发(它是唯一该进 git 的 png)
+!frontend/public/wechat-pay-qr.png
